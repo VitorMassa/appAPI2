@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "appapi2",
+    "slug": "appapi2",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "appapi2"
+}
