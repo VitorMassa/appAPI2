@@ -1,5 +1,9 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
+import { StyleSheet, 
+  Text, 
+  View, 
+  FlatList, 
+  Image, } from 'react-native';
 
 //Import dos arquivos.
 import api from './src/services/api';
@@ -29,11 +33,23 @@ class App extends Component{
 
     render(){
       return(
+        
         <View style={styles.container}>
-          <FlatList 
-          data={this.state.filmes}
-          keyExtractor={item => item.id.toString()}
-          renderItem={ ({item}) => <Filmes data ={item}/>}
+          
+          <Image 
+            style={styles.logo}
+            source={require('./assets/logo.png')} 
+          />
+
+          
+          <FlatList
+            data={this.state.filmes}
+            keyExtractor={item => item.id.toString()}
+            numColumns={3}
+            renderItem={ ({item}) => {return(
+            <View style={styles.items}>
+              <Filmes data ={item}/>
+            </View>)}}
           />
         </View>
       );
@@ -46,8 +62,29 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#8800FF',
-    margin: 50,
+    //margin: 50,
+    //borderRadius: 30,
+    
+    flexDirection: "column",
+    
+    
     
   },
+
+  items: {
+    flexGrow: 1,
+    backgroundColor: '#FFF',
+    margin: 4,
+    padding: 20,
+    alignItems: "center",
+    borderRadius: 20,
+    flexBasis: 0,
+  },
+    
+  logo: {
+    width: '75%',
+    height: '30%',
+    alignSelf: "center"
+  }
 });
 
